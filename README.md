@@ -1,5 +1,9 @@
 # Data Dashboard
 
+## Colaboradoras
+* Maricruz Enrique Rivera
+* Yanina Portal Loarte
+
 ## Preámbulo
 
 En Laboratoria, las Training Managers (TMs) hacen un gran trabajo al analizar la
