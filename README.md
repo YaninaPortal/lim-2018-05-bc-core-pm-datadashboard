@@ -254,7 +254,7 @@ Los datos son revisados semanalmente por la Trading Manager.
 
 Tendra acceso a la data mediante graficos de rapida lectura , obteniendo en primer lugar una vista general  en donde se puede visualizar el  promedio  del cohort que se elija , y en otra pestaña poder obtener con mayor detalle el avance de cada alumna.
 
-## Proceso de Diseño.
+## Proceso de Diseño. 
 
 El primer boceto que se realizo , que se pensó como posible solución que cubriria los requerimientos pedidos ,es el siguiente.
 
