@@ -155,7 +155,7 @@ const getJSON = (url, callback) => {
   xhr.send();
 };
 
-/*     let course = {
+/*     let course = { 
       name: courses,
       totalParts: progress[users[i].id][intro][units][courses].totalParts,
       completedParts: progress[users[i].id][intro][units][courses].completedParts,
