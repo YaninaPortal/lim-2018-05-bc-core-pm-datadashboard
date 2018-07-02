@@ -5,30 +5,6 @@
 * Maricruz Enrique Rivera
 * Yanina Portal Loarte
 
-## Preámbulo
-
-En Laboratoria, las Training Managers (TMs) hacen un gran trabajo al analizar la
-mayor cantidad de datos posibles respecto al progreso de las estudiantes para
-apoyarlas en su aprendizaje.
-
-La principal medida de progreso de una estudiante en Laboratoria es su avance
-completando los proyectos de la [Ruta de Aprendizaje](https://docs.google.com/spreadsheets/d/1AoXQjZnZ5MTPwJPNEGDyvn5vksiOUoPr932TjAldTE4/edit#gid=536983970)
-y su desempeño en función a la [Rúbrica de Niveles Esperados](https://docs.google.com/spreadsheets/d/e/2PACX-1vSkQy1waRpQ-16sn7VogiDTy-Fz5e7OSZSYUCiHC_bkLAKYewr4L8pWJ_BG210PeULe-TjLScNQQT_x/pubhtml).
-Sin embargo, para completar estos proyectos las estudiantes acceden a contenidos
-de aprendizaje (lecturas, videos, ejercicios y quizzes) en un sistema que
-llamamos LMS (Learning Management System). El LMS acumula data sobre quién
-leyó qué, qué ejercicios se han completado, los resultados de los quizzes, etc.
-
-A pesar de que la data de progreso del LMS (ej. lecturas leídas, ejercicios
-  completados, nota en quizzes, etc.) no impacta directamente en la evaluación
-  de una estudiante, sí es una pieza de información relevante que las TMs
-  quisieran visualizar para tener un mejor entendimiento de cómo va cada
-  estudiante en su proceso de aprendizaje.
-
-Así, el reto de este proyecto es crear una interfaz donde las TMs puedan
-_ver_ y _usar_ la data de progreso del LMS. Para ello, proponemos crear un
-**data dashboard** (_tablero de visualización de datos_).
-
 ## Inicio del Proyecto.
 
 Al concluir la lectura del readme por primera vez , se puede llegar a las siguientes conclusiones:
@@ -225,7 +201,10 @@ Diseño  del Sketch , cuyas conclusiones  se  basan en la primera lectura ; como
 
 > Primer boceto.
 
-![Boceto1](ima1.jpg "Boceto1")
+![Boceto1](image/image1.png "Boceto1")
+![Boceto1](image/image2.png "Boceto2")
+![Boceto1](image/image3.png "Boceto3")
+![Boceto1](image/image4.png "Boceto4")
 
 Al ser nuestro público objetivo la Trading Manager ya que es  la encargada de realizar el seguimiento de nuestros avances mediante la manipulación y visualización de la data que estan representados en gráficos para una rápida lectura.
 
@@ -247,19 +226,11 @@ Del 0-40% en color rojo , del 40% - 60% color amarillo y del 60% al 100% en colo
 Como resultado de las modificaciones , se presenta el siguiente boceto.
 
 
-
-
 ## Prototipo de Alta Fidelidad.
 
+![Boceto5](image/ima5.png "Boceto5")
 
-
-![Boceto5](ima5.png "Boceto5")
-
-![Boceto6](ima6.png "Boceto6")
-
-
-
-
+![Boceto6](image/ima6.png "Boceto6")
 
 ### Objetivo del Producto
 **El acceso que tendra la Trading Manager a la data mediante gráficos de rapida lectura , organizado de una manera que pueda encontrar la informacion  que  facilitara su labor , 
@@ -267,16 +238,9 @@ Como resultado de las modificaciones , se presenta el siguiente boceto.
 obteniendo en primer lugar una vista general  en donde se puede visualizar el  promedio  del cohort que se elija , y en otra pestaña poder obtener con mayor detalle el avance de cada alumna.**
 
 **El problema que sera resuelto 
-** Los datos que se manipularan sera de 
-
-
-
-
+** Los datos que se manipularan
 
 ### Sprint 1 
-
-
-
 
 ## Datos relevantes.
 
@@ -296,7 +260,6 @@ El primer boceto que se realizo , que se pensó como posible solución que cubri
 
 >Primer boceto.
 
-![Boceto1](ima1.jpg "Boceto1")
 
 Al entrevistar a la Trading Manager , nos indico que deberiamos modificar lo siguiente :
 
@@ -311,17 +274,10 @@ Del 0-40% en color rojo , del 40% - 60% color amarillo y del 60% al 100% en colo
 
 * Otro elemento que se podria tomar en cuenta seria una nueva pagina en donde pueda tener acceso a un promedio general.
 
-Como resultado de las modificaciones , se presenta el siguiente boceto.
+## DEMO 3
 
-![Boceto2](ima2.jpg "Boceto2")
+* Para la demo 3, tenemos casi el 70% del proyecto culminado.
 
-![Boceto3](ima3.jpg "Boceto3")
+![demo3a](image/demo3a.png "demo3a")
 
-![Boceto4](ima4.jpg "Boceto4")
-
-## Prototipo de Alta Fidelidad.
-
-![Boceto5](ima5.png "Boceto5")
-
-![Boceto6](ima6.png "Boceto6")
-
+![demo3b](image/demo3b.png "demo3b")
