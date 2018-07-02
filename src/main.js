@@ -35,7 +35,7 @@ const title = [
   "Reads",
   "Total"
 ]
-
+ 
 const selectCohort = document.getElementById('cohortGeneral');
 
 getJSON('../data/cohorts.json', (err, json) => {
