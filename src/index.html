@@ -1,74 +1,64 @@
+
 <!DOCTYPE html>
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>Data Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8">
+<title>Data Dashboard</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <header>
-    <h1>LABORATORIA</h1>
-  </header>
+<header>
+<h1>LABORATORIA</h1>
+</header>
 
-  <span>
-    <br> Usuario:
-    <input type="text" placeholder="">
-    <br> Password:
-    <input type="password">
-    <br>
-    <input type="button" id="btnLogin" value="LOGIN">
-  </span>
+<span>
+<br> Usuario:
+<input type="text" placeholder="">
+<br> Password:
+<input type="password">
+<br>
+<input type="button" id="btnLogin" value="LOGIN">
+</span>
 
-  <h2>Dashboard de Progreso General</h2>
-  <p>Cohort:</p>
-  <select id="cohortGeneral">
-  </select>
-  <br>
-  <br>
-  <form>
-    <fieldset>
-      <legend>
-        <strong>Resumen General</strong>
-      </legend>
+<h2>Dashboard de Progreso General</h2>
+<p>Cohort:</p>
+<select id="cohortGeneral">
+<option value="-1">Seleccione Cohorts</option>
+<option value="lim-2018-03-pre-core-pw">lim-2018-03-pre-core-pw</option>
+<option value="otros">otros</option>
+</select>
+<br>
+<br>
+<form>
+<fieldset>
+<legend>
+<strong>Resumen General</strong>
+</legend>
 
-    </fieldset>
-  </form>
+</fieldset>
+</form>
 
-  <h2>Dashboard de Progreso Detallado</h2>
-  <p>Cohort:</p>
-  <select id="cohortDetallado"></select>
-  <br>
-  <br>
-  <form>
-    <fieldset>
-      <legend>
-        <strong>Progreso detallado</strong>
-      </legend>
-      <input type="text" id="txtStudent" placeholder="Ingrese alumno">
-      <input type="button" id="btnSearch" value="Buscar">
-      <br>
-      <table id="tbl-estudiantes">
-        <tr>
-          <th>Estudiante</th>
-          <th>Ejercicios</th>
-          <th>Quiz</th>
-          <th>Lectura</th>
-          <th>Total</th>
-        </tr>
-        <tr>
-          <td>Data Alumna</td>
-          <td>Data % Ejercicios</td>
-          <td>Data % Quiz</td>
-          <td>Data % Lectura</td>
-          <td>% Total</td>
-        </tr>
-      </table>
-    </fieldset>
-  </form>
-  <script src="data.js"></script>
-  <script src="main.js"></script>
+<h2>Dashboard de Progreso Detallado</h2>
+<p>Cohort:</p>
+<select id="cohortDetallado"></select>
+<br>
+<br>
+<form>
+<fieldset>
+<legend>
+<strong>Progreso detallado</strong>
+</legend>
+<input type="text" id="txtStudent" placeholder="Ingrese alumno">
+<input type="button" id="btnSearch" value="Buscar">
+<br>
+<table id="tbl-estudiantes">
+</table>
+</fieldset>
+</form>
+<script src="data.js"></script>
+<script src="main.js"></script>
 </body>
 
 </html>

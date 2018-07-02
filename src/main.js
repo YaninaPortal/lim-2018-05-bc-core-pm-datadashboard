@@ -49,39 +49,19 @@ getJSON('../data/cohorts.json', (err, json) => {
         porcentaje: 0
       };
 
-      // Obtener la referencia del elemento body
-      var body = document.getElementsByTagName("body")[0];
-
-      // Crea un elemento <table> y un elemento <tbody>
-      var tabla = document.createElement("table");
-      var tblBody = document.createElement("tbody");
-
-      // Crea las celdas
-      for (var i = 0; i < 2; i++) {
-        // Crea las hileras de la tabla
-        var hilera = document.createElement("tr");
-
-        for (var j = 0; j < 2; j++) {
-          // Crea un elemento <td> y un nodo de texto, haz que el nodo de
-          // texto sea el contenido de <td>, ubica el elemento <td> al final
-          // de la hilera de la tabla
-          var celda = document.createElement("td");
-          var textoCelda = document.createTextNode(x[i]);
-          celda.appendChild(textoCelda);
-          hilera.appendChild(celda);
-        }
-
-        // agrega la hilera al final de la tabla (al final del elemento tblbody)
-        tblBody.appendChild(hilera);
-      }
-
-      // posiciona el <tbody> debajo del elemento <table>
-      tabla.appendChild(tblBody);
-      // appends <table> into <body>
-      body.appendChild(tabla);
-      // modifica el atributo "border" de la tabla y lo fija a "2";
-      tabla.setAttribute("border", "2");
-
+        let read = {
+        total:0,
+        completed:0,
+        porcentaje:0
+      };
+     
+      let quizzes = {
+        total:0,
+        completed:0,
+        percent:0,
+        scoreSum:0,
+        scoreAvg:0
+      };
 
       let c = 0;
       for (let i = 0; i < x.length; i++) {
@@ -100,23 +80,37 @@ getJSON('../data/cohorts.json', (err, json) => {
           // Ejercicios no guiados
           let z = jsonProgress[x[i]].intro.units['02-variables-and-data-types'].parts['06-exercises'].completed;
           //console.log(z);
+          let d = Object.keys(jsonProgress[x[i]].intro.units['02-variables-and-data-types'].parts['06-exercises'].exercises).length;
           let xyz = ((w + z) / 2) * 100;
           obj = {
             id: x[i],
-            total: 0,
-            completado: jsonProgress[x[i]].intro.units['02-variables-and-data-types'].parts['04-guided-exercises'].completed,
+            total: d,
+            completado:0,
             porcentaje: xyz
           };
 
-          console.log(obj);
+              let m = jsonProgress[jsonUsers[i].id].intro.units['01-introduction'].parts['02-why-learn-to-code'].completed;
+              let n = jsonProgress[jsonUsers[i].id].intro.units['01-introduction'].parts['01-growth-mindset'].completed;
+              let o = jsonProgress[jsonUsers[i].id].intro.units['01-introduction'].parts['00-welcome-and-orientation'].completed;
+              let p = jsonProgress[jsonUsers[i].id].intro.units['01-introduction'].parts['03-your-first-website'].completed;
+            
+             let q = jsonProgress[jsonUsers[i].id].intro.units['03-ux-design'].parts['00-development-team'].completed;
+             console.log(q);
+             let r = jsonProgress[jsonUsers[i].id].intro.units['03-ux-design'].parts['02-ux-design-vs-ui-design'].completed;
+             console.log(r);
+             let s = jsonProgress[jsonUsers[i].id].intro.units['03-ux-design'].parts['01-ux-design'].completed;
+             console.log(s);
+
+             let t = jsonProgress[jsonUsers[i].id].intro.units['02-variables-and-data-types'].parts['03-comments'].completed;
+             let u= jsonProgress[jsonUsers[i].id].intro.units['02-variables-and-data-types'].parts['00-values-data-types-and-operators'].completed; 
+
+          }
+          
         }
-      };
+      });
       console.log(c);
     });
 
   });
 
 });
-
-
-
