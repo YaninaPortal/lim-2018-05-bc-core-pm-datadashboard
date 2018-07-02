@@ -9,6 +9,7 @@ const processCohortData = (options) => {
   return filterData;
 }
 
+
 const computeUsersStats = (users, progress, courses) => {
   let usersWithStats = [];
   let countUserDataEmpty = 0;
