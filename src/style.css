@@ -1,3 +1,132 @@
 body{
-    background:skyblue;
+    width:100%;
+    height: 100%;
+    font-family: Montserrat, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+	padding: 0;
+}
+
+header {
+    width:100%;
+    margin:0;
+    top:0;
+    background-color: #FFFFFF;
+    position: fixed;
+    display: block;
+    z-index: 999;
+    text-align: center;
+}
+
+img{
+    margin: 20px;
+}
+
+nav {
+    width: 100%;
+    height: 47px;
+    border-top: 1px solid #BDBDBD;
+    border-bottom: 1px solid #BDBDBD;
+}
+
+section{
+    text-align: center;
+}
+
+section.hidden {
+    display: none;
+}
+
+ul {
+    height: 100%;
+    width: 150px;
+    min-width: 150px;
+    float: left;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    background-color: #FFFFFF;
+}
+
+li a.active {
+    background-color: #FFE521;
+}
+
+li a:hover:not(.active) {
+    background-color: #DDD;
+}
+
+li a {
+    display: block;
+    color: #211901;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.card {
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+   
+  }
+
+.card-1 {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  }
+  
+.card-1:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+
+main{
+    text-align: center;
+    padding-top: 10em
+} 
+
+
+table{
+    background-color: white;
+    display: inline-block;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+table thead tr th{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    color: #757575;
+    padding: 10px;
+}
+
+table tbody tr td{
+    padding: 10px;
+    color: #757575;
+    text-align: left;
+}
+
+table:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+
+@media only screen and (max-width: 600px) {
+    nav {
+        width: 100%;
+        border: 0;
+    }
+    ul {
+        width: 100%;
+        border-bottom: 1px solid #BDBDBD;
+    }
+
+    .card{
+        width: 300px;
+        height: 300px;
+    }
+
 }

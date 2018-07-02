@@ -3,62 +3,61 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data Dashboard</title>
+
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <!-- LOGO LABORATORIA -->
   <header>
-    <h1>LABORATORIA</h1>
+    <img src="../image/logo.png" alt="logo">
+    <nav>
+      <ul>
+        <li>
+          <a id="button-general" class="active" href="#">General</a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a id="button-students" href="#">Estudiantes</a>
+        </li>
+      </ul>
+    </nav>
   </header>
+  <!-- SECCION MENU -->
 
-  <span>
-    <br> Usuario:
-    <input type="text" placeholder="">
-    <br> Password:
-    <input type="password">
-    <br>
-    <input type="button" id="btnLogin" value="LOGIN">
-  </span>
-
-  <h2>Dashboard de Progreso General</h2>
-  <p>Cohort:</p>
-  <select id="cohortGeneral">
-    <option value="-1">Seleccione Cohorts</option>
-    <option value="lim-2018-03-pre-core-pw">lim-2018-03-pre-core-pw</option>
-    <option value="otros">otros</option>
-  </select>
-  <br>
-  <br>
-  <form>
-    <fieldset>
-      <legend>
-        <strong>Resumen General</strong>
-      </legend>
-
-    </fieldset>
-  </form>
-
-  <h2>Dashboard de Progreso Detallado</h2>
-  <p>Cohort:</p>
-  <select id="cohortDetallado"></select>
-  <br>
-  <br>
-  <form>
-    <fieldset>
-      <legend>
-        <strong>Progreso detallado</strong>
-      </legend>
-      <input type="text" id="txtStudent" placeholder="Ingrese alumno">
-      <input type="button" id="btnSearch" value="Buscar">
+  <!-- AREA PRINCIPAL -->
+  <main>
+    <!-- DASHBOARD GENERAL -->
+    <section id="general">
+      <h2>Dashboard de Progreso General</h2>
+      <p>Cohort:</p>
+      <select id="cohortGeneral">
+       <!--  <option value="-1">Seleccione Cohorts</option>
+        <option value="lim-2018-03-pre-core-pw">lim-2018-03-pre-core-pw</option>
+        <option value="others">otros</option> -->
+      </select>
+      <section>
+        <div class="card card-1">
+          <canvas id="graphic"></canvas>
+        </div>
+      </section>
+    </section>
+    <!-- DASHBOARD DETALLADO -->
+    <section id="students" class="hidden">
+      <h2>Dashboard de Progreso Detallado</h2>
+      <input type="text" id="text-search" placeholder="Ingrese alumno">
+      <input type="button" id="button-search" value="Buscar">
       <br>
-      <table id="tbl-estudiantes">
-       
+      <table id="table-students">
+
       </table>
-    </fieldset>
-  </form>
+    </section>
+  </main>
   <script src="data.js"></script>
   <script src="main.js"></script>
-</body>
+  </body>
 
 </html>
