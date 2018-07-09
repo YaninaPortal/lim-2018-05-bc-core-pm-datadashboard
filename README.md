@@ -228,17 +228,20 @@ Como resultado de las modificaciones , se presenta el siguiente boceto.
 
 ## Prototipo de Alta Fidelidad.
 
-![Boceto5](image/ima5.png "Boceto5")
+![2](img/2.png "2")
+![1](img/1.png "1")
+![3](img/3.png "3")
+![4](img/4.png "4")
 
-![Boceto6](image/ima6.png "Boceto6")
+
 
 ### Objetivo del Producto
 **El acceso que tendra la Trading Manager a la data mediante gráficos de rapida lectura , organizado de una manera que pueda encontrar la informacion  que  facilitara su labor , 
 
 obteniendo en primer lugar una vista general  en donde se puede visualizar el  promedio  del cohort que se elija , y en otra pestaña poder obtener con mayor detalle el avance de cada alumna.**
 
-**El problema que sera resuelto 
-** Los datos que se manipularan
+**El problema que sera resuelto.
+** Los datos que se manipularan.
 
 ### Sprint 1 
 
@@ -281,3 +284,4 @@ Del 0-40% en color rojo , del 40% - 60% color amarillo y del 60% al 100% en colo
 ![demo3a](image/demo3a.png "demo3a")
 
 ![demo3b](image/demo3b.png "demo3b")
+
