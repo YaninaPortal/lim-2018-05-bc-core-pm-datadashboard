@@ -228,10 +228,10 @@ Como resultado de las modificaciones , se presenta el siguiente boceto.
 
 ## Prototipo de Alta Fidelidad.
 
-![2](img/2.png "2")
-![1](img/1.png "1")
-![3](img/3.png "3")
-![4](img/4.png "4")
+![2](img/2.PNG "2")
+![1](img/1.PNG "1")
+![3](img/3.PNG "3")
+![4](img/4.PNG "4")
 
 
 
