@@ -1,22 +1,36 @@
 // data.js para todas las funciones que vimos que obtienen y manipulan los datos
 // 4 funciones
 
-const processCohortData = (options) => {
-  let courseIds = Object.keys(options.cohort.coursesIndex);
-  let computedData = computeUsersStats(options.cohortData.users, options.cohortData.progress, courseIds);
+window.processCohortData = (options) => {
+  console.log('Cuarta funcion');
+  let courses = Object.keys(options.cohort.coursesIndex);
+  let computedData = computeUsersStats(options.cohortData.users, options.cohortData.progress, courses);
   let sortData = sortUsers(computedData, options.orderBy, options.orderDirection);
   let filterData = filterUsers(sortData, options.search);
   return filterData;
 }
 
-const computeUsersStats = (users, progress, courses) => {
+let coursesProgress = {
+  name: '',
+  excercises: 0,
+  reads: 0,
+  quizzes: 0
+}
+
+window.computeUsersStats = (users, progress, courses) => {
+
   let usersWithStats = [];
-  let countUserDataEmpty = 0;
+  let coursesProgress = {};
 
   // variables contador por tipo 
   let excercisesInPart = 0;
   let quizzesInPart = 0;
   let readsInPart = 0;
+
+  // variables contador progreso por curso
+  let excercisesInCourse = 0;
+  let quizzesInCourse = 0;
+  let readsInCourse = 0;
 
   // variables contador de completados por tipo
   let excercisesCompleted = 0;
@@ -27,13 +41,13 @@ const computeUsersStats = (users, progress, courses) => {
   let percentForStats = 0;
   let quizzesScore = 0;
 
+  // analizando el archivo json que contiene el progreso de los usuarios
   for (let i = 0; i < users.length; i++) {
+    users[i].name = users[i].name.toUpperCase();
 
-    if (progress[users[i].id].intro === undefined) {
-      countUserDataEmpty++;
-    } else {
-      let courseKeys = Object.keys(progress[users[i].id]);
-      courseKeys.forEach(course => {
+    courses.forEach(course => {
+      coursesProgress.name = course;
+      if (progress[users[i].id].hasOwnProperty(course)) {
         let units = progress[users[i].id][course];
         percentForStats = units.percent;
         for (let unit in units) {
@@ -76,30 +90,38 @@ const computeUsersStats = (users, progress, courses) => {
             }
           }
         }
-      })
-    };
+      }
+    });
 
+
+    // asignando los stats a cada usuario, con sus respectivos progresos calculados
     users[i].stats = {
       excercises: {
         total: excercisesInPart,
         completed: excercisesCompleted,
-        percent: Math.round((excercisesCompleted / excercisesInPart) * 100)
+        percent: (excercisesCompleted === 0 && excercisesInPart === 0) ? 0 : Math.round((excercisesCompleted / excercisesInPart) * 100)
       },
       quizzes: {
         total: quizzesInPart,
         completed: quizzesCompleted,
-        percent: Math.round((quizzesCompleted / quizzesInPart) * 100),
+        percent: (quizzesCompleted === 0 && quizzesInPart === 0) ? 0 : Math.round((quizzesCompleted / quizzesInPart) * 100),
         scoreSum: quizzesScore,
-        scoreAvg: Math.round(quizzesScore / quizzesCompleted)
+        scoreAvg: (quizzesCompleted === 0 && quizzesInPart === 0) ? 0 : Math.round(quizzesScore / quizzesCompleted)
       },
       reads: {
         total: readsInPart,
         completed: readsCompleted,
-        percent: Math.round((readsCompleted / readsInPart) * 100)
+        percent: (readsCompleted === 0 && readsInPart === 0) ? 0 : Math.round((readsCompleted / readsInPart) * 100)
       },
       percent: percentForStats,
     };
 
+    // contando progreso por curso
+    excercisesInCourse += users[i].stats.excercises.percent;
+    readsInCourse += users[i].stats.reads.percent;
+    quizzesInCourse += users[i].stats.quizzes.percent;
+
+    // reiniciando contadores
     excercisesInPart = 0;
     quizzesInPart = 0;
     readsInPart = 0;
@@ -108,61 +130,128 @@ const computeUsersStats = (users, progress, courses) => {
     quizzesCompleted = 0;
     readsCompleted = 0;
     quizzesScore = 0;
-  }
 
+    percentForStats = 0;
+
+
+  }
+  // llenando datos en el objeto cursoProgress
+  coursesProgress.excercises = Math.round(excercisesInCourse / users.length);
+  coursesProgress.reads = Math.round(readsInCourse / users.length);
+  coursesProgress.quizzes = Math.round(quizzesInCourse / users.length);
+
+  // enviando objeto coursesProgress 
+  progressGeneral(coursesProgress);
+
+  // asignando a userWithStats los usuarios con sus stats calculados
   usersWithStats = users;
-  console.log('users sin data: ' + countUserDataEmpty);
   return usersWithStats;
 };
 
 //ordenar usuarios
-const sortUsers = (users, orderBy, orderDirection) => {
+window.sortUsers = (users, orderBy, orderDirection) => {
+  console.log('segunda funcion, ordenar usuarios');
+
   //devuelve usuarios ordenados de acuerdo a elección
   let usersOrder = users.sort((a, b) => {
-    if (a[orderBy] > b[orderBy]) {
-      return 1;
+    switch (orderBy) {
+      case 'name': {
+        if (orderDirection === 'ASC') {
+          if (a[orderBy] > b[orderBy]) {
+            return 1;
+          } else {
+            return -1;
+          }
+        } else {
+          if (a[orderBy] < b[orderBy]) {
+            return 1;
+          } else {
+            return -1;
+          }
+        }
+      }
+      case 'excercises': {
+        if (orderDirection === 'ASC') {
+          if (a.stats[orderBy].percent > b.stats[orderBy].percent) {
+            return 1;
+          } else {
+            return -1;
+          }
+        } else {
+          if (a.stats[orderBy].percent < b.stats[orderBy].percent) {
+            return 1;
+          } else {
+            return -1;
+          }
+        }
+      }
+      case 'reads': {
+        if (orderDirection === 'ASC') {
+          if (a.stats[orderBy].percent > b.stats[orderBy].percent) {
+            return 1;
+          } else {
+            return -1;
+          }
+        } else {
+          if (a.stats[orderBy].percent < b.stats[orderBy].percent) {
+            return 1;
+          } else {
+            return -1;
+          }
+        }
+      }
+      case 'quizzes': {
+        if (orderDirection === 'ASC') {
+          if (a.stats[orderBy].percent > b.stats[orderBy].percent) {
+            return 1;
+          } else {
+            return -1;
+          }
+        } else {
+          if (a.stats[orderBy].percent < b.stats[orderBy].percent) {
+            return 1;
+          } else {
+            return -1;
+          }
+        }
+      }
+      case 'percent': {
+        if (orderDirection === 'ASC') {
+          if (a.stats[orderBy] > b.stats[orderBy]) {
+            return 1;
+          } else {
+            return -1;
+          }
+        } else {
+          if (a.stats[orderBy] < b.stats[orderBy]) {
+            return 1;
+          } else {
+            return -1;
+          }
+        }
+      }
     }
-    return -1;
-  });
-
+  }
+  );
   return usersOrder;
 };
 
 //filtrar usuarios
-const filterUsers = (users, search) => {
+window.filterUsers = (users, search) => {
+  console.log('tercera funcion, filtrar usuarios');
+
   if (search === "") {
     return users;
   } else {
-    return users.filter(user => (user.name.includes(search)));
+    return users.filter(user => (user.name.includes(search.toUpperCase())));
   }
+
 };
 
-const getJSON = (url, callback) => {
-  const xhr = new XMLHttpRequest();
-  xhr.onload = _ => {
-    if (xhr.readyState === 4) {
-      if (xhr.status !== 200) {
-        return callback(new Error(`HTTP error: ${xhr.status}`));
-      }
-      try {
-        callback(null, JSON.parse(xhr.responseText));
-      } catch (err) {
-        callback(err);
-      }
-    }
-  };
-  xhr.open('GET', url);
-  xhr.send();
-};
-
-/*     let course = { 
-      name: courses,
-      totalParts: progress[users[i].id][intro][units][courses].totalParts,
-      completedParts: progress[users[i].id][intro][units][courses].completedParts,
-      percentCourse: (progress[users[i].id][intro][units][courses].completedParts / progress[users[i].id][intro][units][courses].totalParts) * 100
-    } */
 
 let createTable = (element, title, usersWithStats) => {
+  console.log('creando tablas');
+
   var thead = document.createElement('thead'); // crea un element thead para table
   var tr = document.createElement('tr'); // crea un elemento tr para el head
 
@@ -201,8 +290,21 @@ let createTable = (element, title, usersWithStats) => {
   element.appendChild(tbdy);
 }
 
+const getJSON = (url, callback) => {
+  const xhr = new XMLHttpRequest();
+  xhr.onload = _ => {
+    if (xhr.readyState === 4) {
+      if (xhr.status !== 200) {
+        return callback(new Error(`HTTP error: ${xhr.status}`));
+      }
+      try {
+        callback(null, JSON.parse(xhr.responseText));
+      } catch (err) {
+        callback(err);
+      }
+    }
+  };
+  xhr.open('GET', url);
+  xhr.send();
+};
 
-window.processCohortData();
-window.usersWithStats();
-window.sortUsers();
-window.filterUsers();

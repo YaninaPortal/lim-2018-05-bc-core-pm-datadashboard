@@ -5,14 +5,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data Dashboard</title>
-
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <!-- LOGO LABORATORIA -->
   <header>
-    <img src="../image/logo.png" alt="logo">
+    <img src="../image/logo1.png" alt="logo">
     <nav>
       <ul>
         <li>
@@ -26,38 +25,52 @@
       </ul>
     </nav>
   </header>
-  <!-- SECCION MENU -->
-
-  <!-- AREA PRINCIPAL -->
   <main>
     <!-- DASHBOARD GENERAL -->
     <section id="general">
-      <h2>Dashboard de Progreso General</h2>
-      <p>Cohort:</p>
       <select id="cohortGeneral">
-       <!--  <option value="-1">Seleccione Cohorts</option>
-        <option value="lim-2018-03-pre-core-pw">lim-2018-03-pre-core-pw</option>
-        <option value="others">otros</option> -->
       </select>
-      <section>
-        <div class="card card-1">
-          <canvas id="graphic"></canvas>
+      <div>
+        <div class="card shadow">
+          <p>Curso:
+            <label id="course"></label>
+          </p>
+          <p>Excercises:
+            <label id="excercises-course"></label>
+          </p>
+          <p>Reads:
+            <label id="reads-course"></label>
+          </p>
+          <p>Quizzes:
+            <label id="quizzes-course"></label>
+          </p>
         </div>
-      </section>
+      </div>
     </section>
     <!-- DASHBOARD DETALLADO -->
     <section id="students" class="hidden">
-      <h2>Dashboard de Progreso Detallado</h2>
       <input type="text" id="text-search" placeholder="Ingrese alumno">
-      <input type="button" id="button-search" value="Buscar">
-      <br>
+      <select id="select-order">
+        <option value="-1">Ordenar por ... </option>
+        <option value="name">name</option>
+        <option value="excercises">excercises</option>
+        <option value="reads">reads</option>
+        <option value="quizzes">quizzes</option>
+        <option value="percent">percent</option>
+      </select>
+      <select id="order-direction">
+        <option value="-1">Ordenar de forma...</option>
+        <option value="ASC">ASC</option>
+        <option value="DESC">DESC</option>
+      </select>
       <table id="table-students">
-
       </table>
     </section>
   </main>
+
   <script src="data.js"></script>
   <script src="main.js"></script>
-  </body>
+
+</body>
 
 </html>
