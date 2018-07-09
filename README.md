@@ -284,4 +284,3 @@ Del 0-40% en color rojo , del 40% - 60% color amarillo y del 60% al 100% en colo
 ![demo3a](image/demo3a.png "demo3a")
 
 ![demo3b](image/demo3b.png "demo3b")
-
