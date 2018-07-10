@@ -225,11 +225,11 @@ Del 0-40% en color rojo , del 40% - 60% color amarillo y del 60% al 100% en colo
 
 Es el diseño ideal que se entregaria de tener un tiempo ilimitado.
 
-![1](img/1.PNG "1")
-![2](img/2.PNG "2")
-![3](img/3.PNG "3")
-![4](img/4.PNG "4")
-![5](img/4.PNG "5")
+![1](image/1.PNG "1")
+![2](image/2.PNG "2")
+![3](image/3.PNG "3")
+![4](image/4.PNG "4")
+![5](image/5.PNG "5")
 
 
 ### Objetivo del Producto
@@ -270,3 +270,5 @@ Se procede a obtener la data y a la investigación para crear la 4ta función y 
 
 Se presenta el proyecto el final.
 
+![6](image/6.png "6")
+![7](image/6.png "7")
