@@ -1,6 +1,3 @@
-// data.js para todas las funciones que vimos que obtienen y manipulan los datos
-// 4 funciones
-
 window.processCohortData = (options) => {
   console.log('Cuarta funcion');
   let courses = Object.keys(options.cohort.coursesIndex);
