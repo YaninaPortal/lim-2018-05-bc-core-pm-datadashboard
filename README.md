@@ -125,7 +125,7 @@ No se debe confundir con el archivo *index.html* del proyecto , este archivo es 
 
 Contiene el set de datos de prueba que se usarán para correr las pruebas.
 
-#### SPRINT 1 ( 06/06 al 15/06 )
+#### SPRINT 1 
 
 ## Paso 1
 
@@ -187,8 +187,6 @@ Cambiar a la rama borrador ambas.
 
 Leer los temas que se emplearan para desarrollar el reto (Array , Object) que se encuentra en el LMS.
 
-Otras fuentes que se acudieron :
-
 ## Paso 3 
 
 Iniciar la documentación en el readme , mencionando la instalación del entorno de trabajo y los temas que se estudiaron.
@@ -223,24 +221,24 @@ Del 0-40% en color rojo , del 40% - 60% color amarillo y del 60% al 100% en colo
 
 * Otro elemento que se podria tomar en cuenta seria una nueva pagina en donde pueda tener acceso a un promedio general.
 
-Como resultado de las modificaciones , se presenta el siguiente boceto.
-
-
 ## Prototipo de Alta Fidelidad.
 
-![Boceto5](image/ima5.png "Boceto5")
+Es el diseño ideal que se entregaria de tener un tiempo ilimitado.
 
-![Boceto6](image/ima6.png "Boceto6")
+![1](image/1.PNG "1")
+![2](image/2.png "2")
+![3](image/3.png "3")
+![4](image/4.png "4")
+![5](image/5.png "5")
+
 
 ### Objetivo del Producto
-**El acceso que tendra la Trading Manager a la data mediante gráficos de rapida lectura , organizado de una manera que pueda encontrar la informacion  que  facilitara su labor , 
+**El acceso que tendra la Trading Manager a la data mediante gráficos de rapida lectura , organizado de una manera que pueda encontrar la informacion  que  facilitara su labor .
 
-obteniendo en primer lugar una vista general  en donde se puede visualizar el  promedio  del cohort que se elija , y en otra pestaña poder obtener con mayor detalle el avance de cada alumna.**
+Obteniendo en primer lugar una vista general  en donde se puede visualizar el  promedio  del cohort que se elija , y en otra pestaña poder obtener con mayor detalle el avance de cada alumna.**
 
-**El problema que sera resuelto 
-** Los datos que se manipularan
-
-### Sprint 1 
+**El problema que sera resuelto.
+** Los datos que se manipularan.
 
 ## Datos relevantes.
 
@@ -254,30 +252,25 @@ Los datos son revisados semanalmente por la Trading Manager.
 
 Tendra acceso a la data mediante graficos de rapida lectura , obteniendo en primer lugar una vista general  en donde se puede visualizar el  promedio  del cohort que se elija , y en otra pestaña poder obtener con mayor detalle el avance de cada alumna.
 
-## Proceso de Diseño.
+### Sprint 2
 
-El primer boceto que se realizo , que se pensó como posible solución que cubriria los requerimientos pedidos ,es el siguiente.
+Actualización del readme .
 
->Primer boceto.
+Se procede a obtener la data y a la investigación para crear la 4ta función y 2da función.
 
+## Sprint 3
 
-Al entrevistar a la Trading Manager , nos indico que deberiamos modificar lo siguiente :
-
-* Unir la lista de alumnos y los porcentajes ya que estaban separados , ya que nuestra idea inicial era que ese cuadro desapareciara  al momento de que seleccionara el nombre de una alumna , por lo tanto deberia estar separado ; pero la observición de la Trading Manager era que deberian estar juntos para que pueda relacionar alumna y porcentaje de avance.
-
-* La prioridad de cursos , en primer lugar ejercicios autocorregidos  , seguido lecturas y  por ultimo quizzes.
-
-* Nos indico los gráficos de cada curso en especifico (ejercicios , lecturas y quizzes) en caso de llegar al Hacking Edition , para lecturas grafico circular , para quizzes y ejercicios graficos en barra.
-
-* Poder distinguir segun los colores de fondo el avance en modo general con un color en especifico , por ejemplo : 
-Del 0-40% en color rojo , del 40% - 60% color amarillo y del 60% al 100% en color verde.
-
-* Otro elemento que se podria tomar en cuenta seria una nueva pagina en donde pueda tener acceso a un promedio general.
-
-## DEMO 3
+* Culmina la creacion de las funciones.
 
 * Para la demo 3, tenemos casi el 70% del proyecto culminado.
 
 ![demo3a](image/demo3a.png "demo3a")
 
 ![demo3b](image/demo3b.png "demo3b")
+
+## Sprint 4 
+
+Se presenta el proyecto el final.
+
+![6](image/6.png "6")
+![7](image/7.png "7")
