@@ -223,7 +223,7 @@ Del 0-40% en color rojo , del 40% - 60% color amarillo y del 60% al 100% en colo
 
 ## Prototipo de Alta Fidelidad.
 
-Es el diseño ideal que se entregaria de tener un tiempo ilimitado.
+Es el diseño ideal que se entregaria de tener un tiempo ilimitado , es el diseño ideal.
 
 ![1](image/1.PNG "1")
 ![2](image/2.png "2")

@@ -22,9 +22,14 @@ const title = [
   'Reads',
   'Percent Total'
 ]
+<<<<<<< HEAD
 
 let options = {};
 
+=======
+ 
+const selectCohort = document.getElementById('cohortGeneral');
+>>>>>>> a992568149fec0311cfda527f85494103ae90f53
 
 getJSON('../data/cohorts.json', (err, json) => {
   if (err) {
