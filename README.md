@@ -225,11 +225,11 @@ Del 0-40% en color rojo , del 40% - 60% color amarillo y del 60% al 100% en colo
 
 Es el diseño ideal que se entregaria de tener un tiempo ilimitado.
 
-![1](image/1.PNG "1")
-![2](image/2.PNG "2")
-![3](image/3.PNG "3")
-![4](image/4.PNG "4")
-![5](image/5.PNG "5")
+![1](image/1.png "1")
+![2](image/2.png "2")
+![3](image/3.png "3")
+![4](image/4.png "4")
+![5](image/5.png "5")
 
 
 ### Objetivo del Producto
@@ -260,6 +260,8 @@ Se procede a obtener la data y a la investigación para crear la 4ta función y 
 
 ## Sprint 3
 
+* Culmina la creacion de las funciones.
+
 * Para la demo 3, tenemos casi el 70% del proyecto culminado.
 
 ![demo3a](image/demo3a.png "demo3a")
@@ -271,4 +273,4 @@ Se procede a obtener la data y a la investigación para crear la 4ta función y 
 Se presenta el proyecto el final.
 
 ![6](image/6.png "6")
-![7](image/6.png "7")
+![7](image/7.png "7")
