@@ -225,7 +225,7 @@ Del 0-40% en color rojo , del 40% - 60% color amarillo y del 60% al 100% en colo
 
 Es el diseño ideal que se entregaria de tener un tiempo ilimitado.
 
-![1](image/1.png "1")
+![1](image/1.PNG "1")
 ![2](image/2.png "2")
 ![3](image/3.png "3")
 ![4](image/4.png "4")
