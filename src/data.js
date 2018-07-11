@@ -9,7 +9,7 @@ window.processCohortData = (options) => {
 
 let coursesProgress = {
   name: '',
-  excercises: 0,
+  exercises: 0,
   reads: 0,
   quizzes: 0
 }
@@ -19,23 +19,23 @@ window.computeUsersStats = (users, progress, courses) => {
   let usersWithStats = [];
   let coursesProgress = {};
 
-  // variables contador por tipo 
-  let excercisesInPart = 0;
+  // variables contador por tipo para cada usuario 
+  let exercisesInPart = 0;
   let quizzesInPart = 0;
   let readsInPart = 0;
 
-  // variables contador progreso por curso
-  let excercisesInCourse = 0;
+  // variables contador progreso por tipo para cada curso
+  let exercisesInCourse = 0;
   let quizzesInCourse = 0;
   let readsInCourse = 0;
 
-  // variables contador de completados por tipo
-  let excercisesCompleted = 0;
+  // variables contador de completados por tipo para cada usuario
+  let exercisesCompleted = 0;
   let quizzesCompleted = 0;
   let readsCompleted = 0;
 
-  // variable para porcentaje total stats
-  let percentForStats = 0;
+  // variable para porcentaje total del curso por usuario
+  let percentTotal = 0;
   let quizzesScore = 0;
 
   // analizando el archivo json que contiene el progreso de los usuarios
@@ -46,7 +46,7 @@ window.computeUsersStats = (users, progress, courses) => {
       coursesProgress.name = course;
       if (progress[users[i].id].hasOwnProperty(course)) {
         let units = progress[users[i].id][course];
-        percentForStats = units.percent;
+        percentTotal = units.percent;
         for (let unit in units) {
           let temas = units[unit];
           for (let tema in temas) {
@@ -56,14 +56,14 @@ window.computeUsersStats = (users, progress, courses) => {
               for (let subpart in subparts) {
                 let subsubparts = subparts[subpart];
                 if (subpart.includes('guided') === false) {
-                  switch (subsubparts.type) {
+                  switch (subsubparts.type) {                  
                     case 'practice':
-                      excercisesInPart += Object.keys(subsubparts.exercises).length;
+                      exercisesInPart += Object.keys(subsubparts.exercises).length;
                       for (let subsubpart in subsubparts) {
                         let exercises = subsubparts[subsubpart];
-                        for (let excercise in exercises) {
-                          if (exercises[excercise].completed == 1) {
-                            excercisesCompleted++;
+                        for (let exercise in exercises) {
+                          if (exercises[exercise].completed == 1) {
+                            exercisesCompleted++;
                           }
                         }
                       }
@@ -93,10 +93,10 @@ window.computeUsersStats = (users, progress, courses) => {
 
     // asignando los stats a cada usuario, con sus respectivos progresos calculados
     users[i].stats = {
-      excercises: {
-        total: excercisesInPart,
-        completed: excercisesCompleted,
-        percent: (excercisesCompleted === 0 && excercisesInPart === 0) ? 0 : Math.round((excercisesCompleted / excercisesInPart) * 100)
+      exercises: {
+        total: exercisesInPart,
+        completed: exercisesCompleted,
+        percent: (exercisesCompleted === 0 && exercisesInPart === 0) ? 0 : Math.round((exercisesCompleted / exercisesInPart) * 100)
       },
       quizzes: {
         total: quizzesInPart,
@@ -110,34 +110,34 @@ window.computeUsersStats = (users, progress, courses) => {
         completed: readsCompleted,
         percent: (readsCompleted === 0 && readsInPart === 0) ? 0 : Math.round((readsCompleted / readsInPart) * 100)
       },
-      percent: percentForStats,
+      percent: percentTotal,
     };
 
     // contando progreso por curso
-    excercisesInCourse += users[i].stats.excercises.percent;
+    exercisesInCourse += users[i].stats.exercises.percent;
     readsInCourse += users[i].stats.reads.percent;
     quizzesInCourse += users[i].stats.quizzes.percent;
 
     // reiniciando contadores
-    excercisesInPart = 0;
+    exercisesInPart = 0;
     quizzesInPart = 0;
     readsInPart = 0;
 
-    excercisesCompleted = 0;
+    exercisesCompleted = 0;
     quizzesCompleted = 0;
     readsCompleted = 0;
     quizzesScore = 0;
 
-    percentForStats = 0;
+    percentTotal = 0;
 
 
   }
   // llenando datos en el objeto cursoProgress
-  coursesProgress.excercises = Math.round(excercisesInCourse / users.length);
+  coursesProgress.exercises = Math.round(exercisesInCourse / users.length);
   coursesProgress.reads = Math.round(readsInCourse / users.length);
   coursesProgress.quizzes = Math.round(quizzesInCourse / users.length);
 
-  // enviando objeto coursesProgress 
+  // enviando objeto coursesProgress, esto se muestra en la parte principal de la web. Progreso por cursos
   progressGeneral(coursesProgress);
 
   // asignando a userWithStats los usuarios con sus stats calculados
@@ -147,27 +147,28 @@ window.computeUsersStats = (users, progress, courses) => {
 
 //ordenar usuarios
 window.sortUsers = (users, orderBy, orderDirection) => {
-  console.log('segunda funcion, ordenar usuarios');
 
   //devuelve usuarios ordenados de acuerdo a elección
   let usersOrder = users.sort((a, b) => {
+    let x=0;
     switch (orderBy) {
       case 'name': {
         if (orderDirection === 'ASC') {
           if (a[orderBy] > b[orderBy]) {
-            return 1;
+            x= 1;
           } else {
-            return -1;
+            x= -1;
           }
         } else {
           if (a[orderBy] < b[orderBy]) {
-            return 1;
+            x= 1;
           } else {
-            return -1;
+            x= -1;
           }
         }
+        return x;
       }
-      case 'excercises': {
+      case 'exercises': {
         if (orderDirection === 'ASC') {
           if (a.stats[orderBy].percent > b.stats[orderBy].percent) {
             return 1;
@@ -212,6 +213,37 @@ window.sortUsers = (users, orderBy, orderDirection) => {
           }
         }
       }
+      case 'scoreAvg': {
+        if (orderDirection === 'ASC') {
+          if (a.stats.quizzes[orderBy] > b.stats.quizzes[orderBy]) {
+            return 1;
+          } else {
+            return -1;
+          }
+        } else {
+          if (a.stats.quizzes[orderBy] < b.stats.quizzes[orderBy]) {
+            return 1;
+          } else {
+            return -1;
+          }
+        }
+      }
+      case 'scoreSum': {
+        if (orderDirection === 'ASC') {
+          if (a.stats.quizzes[orderBy] > b.stats.quizzes[orderBy]) {
+            return 1;
+          } else {
+            return -1;
+          }
+        } else {
+          if (a.stats.quizzes[orderBy] < b.stats.quizzes[orderBy]) {
+            return 1;
+          } else {
+            return -1;
+          }
+        }
+      }
+
       case 'percent': {
         if (orderDirection === 'ASC') {
           if (a.stats[orderBy] > b.stats[orderBy]) {
@@ -235,57 +267,14 @@ window.sortUsers = (users, orderBy, orderDirection) => {
 
 //filtrar usuarios
 window.filterUsers = (users, search) => {
-  console.log('tercera funcion, filtrar usuarios');
-
-  if (search === "") {
+ 
+  if (search === '') {
     return users;
   } else {
     return users.filter(user => (user.name.includes(search.toUpperCase())));
   }
 
 };
-
-
-let createTable = (element, title, usersWithStats) => {
-  console.log('creando tablas');
-
-  var thead = document.createElement('thead'); // crea un element thead para table
-  var tr = document.createElement('tr'); // crea un elemento tr para el head
-
-  for (var i = 0; i < title.length; i++) {
-    var th = document.createElement('th');//crea un elemento th para cada titulo
-    th.appendChild(document.createTextNode(title[i])); //da el nombre del titulo
-    tr.appendChild(th); // agrega el th a sus respectivos tr
-  }
-  thead.appendChild(tr); //agrega el tr al thead
-
-  var tbdy = document.createElement('tbody');
-  for (var j = 0; j < usersWithStats.length; j++) {
-    var tr = document.createElement('tr');
-    for (var k = 0; k < title.length; k++) {
-      if (k === 0) {
-        var td = document.createElement('td');
-        td.appendChild(document.createTextNode(j.toString()));
-        tr.appendChild(td);
-      } else if (k === 1) {
-        var td = document.createElement('td');
-        td.appendChild(document.createTextNode(usersWithStats[j].name));
-        tr.appendChild(td);
-      } else if (k < (title.length - 1)) {
-        var td = document.createElement('td');
-        td.appendChild(document.createTextNode(usersWithStats[j].stats[Object.keys(usersWithStats[j].stats)[k - 2]].percent));
-        tr.appendChild(td);
-      } else if (k === title.length - 1) {
-        var td = document.createElement('td');
-        td.appendChild(document.createTextNode(usersWithStats[j].stats[Object.keys(usersWithStats[j].stats)[k - 2]]));
-        tr.appendChild(td);
-      }
-    }
-    tbdy.appendChild(tr);
-  }
-  element.appendChild(thead);
-  element.appendChild(tbdy);
-}
 
 const getJSON = (url, callback) => {
   const xhr = new XMLHttpRequest();

@@ -8,10 +8,10 @@ const textSearch = document.getElementById('text-search');
 const tableStudents = document.getElementById('table-students');
 const selectOrder = document.getElementById('select-order');
 const selectDirOrder = document.getElementById('order-direction');
-const course = document.getElementById('course')
-const excercisesCourse = document.getElementById('excercises-course')
-const readsCourse = document.getElementById('reads-course')
-const quizzesCourse = document.getElementById('quizzes-course')
+const course = document.getElementById('course');
+const exercisesCourse = document.getElementById('exercises-course');
+const readsCourse = document.getElementById('reads-course');
+const quizzesCourse = document.getElementById('quizzes-course');
 
 // Arreglo para el título de la tabla a mostrar en estudiantes
 const title = [
@@ -61,14 +61,12 @@ getJSON('../data/cohorts.json', (err, json) => {
             users: jsonUsers,
             progress: jsonProgress
           },
-          orderBy: "",
-          orderDirection: "",
+          orderBy: '',
+          orderDirection: '',
           search: ''
         }
         let usersWithStats = processCohortData(options);
         createTable(tableStudents, title, usersWithStats);
-
-
       });
     });
   });
@@ -77,7 +75,7 @@ getJSON('../data/cohorts.json', (err, json) => {
 const progressGeneral = (coursesProgress) => {
 
   course.innerHTML = coursesProgress.name;
-  excercisesCourse.innerHTML = coursesProgress.excercises +' % ';
+  exercisesCourse.innerHTML = coursesProgress.exercises +' % ';
   readsCourse.innerHTML = coursesProgress.reads +' % ';
   quizzesCourse.innerHTML = coursesProgress.quizzes +' % ';
 
@@ -132,3 +130,42 @@ selectDirOrder.addEventListener('change', () => {
 });
 
 
+let createTable = (element, title, usersWithStats) => {
+
+  let thead = document.createElement('thead'); // crea un element thead para table
+  let tr = document.createElement('tr'); // crea un elemento tr para el head
+
+  for (let i = 0; i < title.length; i++) {
+    let th = document.createElement('th');//crea un elemento th para cada titulo
+    th.appendChild(document.createTextNode(title[i])); //da el nombre del titulo
+    tr.appendChild(th); // agrega el th a sus respectivos tr
+  }
+  thead.appendChild(tr); //agrega el tr al thead
+
+  let tbdy = document.createElement('tbody');
+  for (let j = 0; j < usersWithStats.length; j++) {
+    let tr = document.createElement('tr');
+    for (let k = 0; k < title.length; k++) {
+      if (k === 0) {
+        let td = document.createElement('td');
+        td.appendChild(document.createTextNode(j.toString()));
+        tr.appendChild(td);
+      } else if (k === 1) {
+        let td = document.createElement('td');
+        td.appendChild(document.createTextNode(usersWithStats[j].name));
+        tr.appendChild(td);
+      } else if (k < (title.length - 1)) {
+        let td = document.createElement('td');
+        td.appendChild(document.createTextNode(usersWithStats[j].stats[Object.keys(usersWithStats[j].stats)[k - 2]].percent));
+        tr.appendChild(td);
+      } else if (k === title.length - 1) {
+        let td = document.createElement('td');
+        td.appendChild(document.createTextNode(usersWithStats[j].stats[Object.keys(usersWithStats[j].stats)[k - 2]]));
+        tr.appendChild(td);
+      }
+    }
+    tbdy.appendChild(tr);
+  }
+  element.appendChild(thead);
+  element.appendChild(tbdy);
+}
