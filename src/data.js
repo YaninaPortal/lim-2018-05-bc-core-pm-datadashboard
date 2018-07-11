@@ -12,7 +12,7 @@ window.processCohortData = (options) => {
 
 let coursesProgress = {
   name: '',
-  excercises: 0,
+  exercises: 0,
   reads: 0,
   quizzes: 0
 }
@@ -23,17 +23,17 @@ window.computeUsersStats = (users, progress, courses) => {
   let coursesProgress = {};
 
   // variables contador por tipo 
-  let excercisesInPart = 0;
+  let exercisesInPart = 0;
   let quizzesInPart = 0;
   let readsInPart = 0;
 
   // variables contador progreso por curso
-  let excercisesInCourse = 0;
+  let exercisesInCourse = 0;
   let quizzesInCourse = 0;
   let readsInCourse = 0;
 
   // variables contador de completados por tipo
-  let excercisesCompleted = 0;
+  let exercisesCompleted = 0;
   let quizzesCompleted = 0;
   let readsCompleted = 0;
 
@@ -61,12 +61,12 @@ window.computeUsersStats = (users, progress, courses) => {
                 if (subpart.includes('guided') === false) {
                   switch (subsubparts.type) {
                     case 'practice':
-                      excercisesInPart += Object.keys(subsubparts.exercises).length;
+                      exercisesInPart += Object.keys(subsubparts.exercises).length;
                       for (let subsubpart in subsubparts) {
                         let exercises = subsubparts[subsubpart];
-                        for (let excercise in exercises) {
-                          if (exercises[excercise].completed == 1) {
-                            excercisesCompleted++;
+                        for (let exercise in exercises) {
+                          if (exercises[exercise].completed == 1) {
+                            exercisesCompleted++;
                           }
                         }
                       }
@@ -96,10 +96,10 @@ window.computeUsersStats = (users, progress, courses) => {
 
     // asignando los stats a cada usuario, con sus respectivos progresos calculados
     users[i].stats = {
-      excercises: {
-        total: excercisesInPart,
-        completed: excercisesCompleted,
-        percent: (excercisesCompleted === 0 && excercisesInPart === 0) ? 0 : Math.round((excercisesCompleted / excercisesInPart) * 100)
+      exercises: {
+        total: exercisesInPart,
+        completed: exercisesCompleted,
+        percent: (exercisesCompleted === 0 && exercisesInPart === 0) ? 0 : Math.round((exercisesCompleted / exercisesInPart) * 100)
       },
       quizzes: {
         total: quizzesInPart,
@@ -117,16 +117,16 @@ window.computeUsersStats = (users, progress, courses) => {
     };
 
     // contando progreso por curso
-    excercisesInCourse += users[i].stats.excercises.percent;
+    exercisesInCourse += users[i].stats.exercises.percent;
     readsInCourse += users[i].stats.reads.percent;
     quizzesInCourse += users[i].stats.quizzes.percent;
 
     // reiniciando contadores
-    excercisesInPart = 0;
+    exercisesInPart = 0;
     quizzesInPart = 0;
     readsInPart = 0;
 
-    excercisesCompleted = 0;
+    exercisesCompleted = 0;
     quizzesCompleted = 0;
     readsCompleted = 0;
     quizzesScore = 0;
@@ -136,12 +136,12 @@ window.computeUsersStats = (users, progress, courses) => {
 
   }
   // llenando datos en el objeto cursoProgress
-  coursesProgress.excercises = Math.round(excercisesInCourse / users.length);
+  coursesProgress.exercises = Math.round(exercisesInCourse / users.length);
   coursesProgress.reads = Math.round(readsInCourse / users.length);
   coursesProgress.quizzes = Math.round(quizzesInCourse / users.length);
 
   // enviando objeto coursesProgress 
-  progressGeneral(coursesProgress);
+  //progressGeneral(coursesProgress);
 
   // asignando a userWithStats los usuarios con sus stats calculados
   usersWithStats = users;
@@ -170,7 +170,7 @@ window.sortUsers = (users, orderBy, orderDirection) => {
           }
         }
       }
-      case 'excercises': {
+      case 'exercises': {
         if (orderDirection === 'ASC') {
           if (a.stats[orderBy].percent > b.stats[orderBy].percent) {
             return 1;

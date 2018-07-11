@@ -58,8 +58,9 @@ describe('data', () => {
           total: 3,
           completed: 2,
           percent: 67,
+          scoreSum:57,
           scoreAvg: 29,
-        });
+          });
       });
 
       it('debería tener propiedad reads con valor {total: 11, completed: 6, percent: 55}', () => {
