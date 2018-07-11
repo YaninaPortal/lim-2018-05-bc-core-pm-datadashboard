@@ -75,9 +75,9 @@ getJSON('../data/cohorts.json', (err, json) => {
 const progressGeneral = (coursesProgress) => {
 
   course.innerHTML = coursesProgress.name;
-  exercisesCourse.innerHTML = coursesProgress.exercises +' % ';
-  readsCourse.innerHTML = coursesProgress.reads +' % ';
-  quizzesCourse.innerHTML = coursesProgress.quizzes +' % ';
+  exercisesCourse.innerHTML = coursesProgress.exercises + ' % ';
+  readsCourse.innerHTML = coursesProgress.reads + ' % ';
+  quizzesCourse.innerHTML = coursesProgress.quizzes + ' % ';
 
 }
 

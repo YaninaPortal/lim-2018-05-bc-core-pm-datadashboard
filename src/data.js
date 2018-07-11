@@ -56,7 +56,7 @@ window.computeUsersStats = (users, progress, courses) => {
               for (let subpart in subparts) {
                 let subsubparts = subparts[subpart];
                 if (subpart.includes('guided') === false) {
-                  switch (subsubparts.type) {                  
+                  switch (subsubparts.type) {
                     case 'practice':
                       exercisesInPart += Object.keys(subsubparts.exercises).length;
                       for (let subsubpart in subsubparts) {
@@ -150,20 +150,20 @@ window.sortUsers = (users, orderBy, orderDirection) => {
 
   //devuelve usuarios ordenados de acuerdo a elección
   let usersOrder = users.sort((a, b) => {
-    let x=0;
+    let x = 0;
     switch (orderBy) {
       case 'name': {
         if (orderDirection === 'ASC') {
           if (a[orderBy] > b[orderBy]) {
-            x= 1;
+            x = 1;
           } else {
-            x= -1;
+            x = -1;
           }
         } else {
           if (a[orderBy] < b[orderBy]) {
-            x= 1;
+            x = 1;
           } else {
-            x= -1;
+            x = -1;
           }
         }
         return x;
@@ -267,7 +267,7 @@ window.sortUsers = (users, orderBy, orderDirection) => {
 
 //filtrar usuarios
 window.filterUsers = (users, search) => {
- 
+
   if (search === '') {
     return users;
   } else {
