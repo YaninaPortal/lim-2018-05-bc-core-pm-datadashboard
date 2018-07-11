@@ -1,6 +1,3 @@
-// data.js para todas las funciones que vimos que obtienen y manipulan los datos
-// 4 funciones
-
 window.processCohortData = (options) => {
   console.log('Cuarta funcion');
   let courses = Object.keys(options.cohort.coursesIndex);
@@ -22,23 +19,23 @@ window.computeUsersStats = (users, progress, courses) => {
   let usersWithStats = [];
   let coursesProgress = {};
 
-  // variables contador por tipo 
+  // variables contador por tipo para cada usuario 
   let exercisesInPart = 0;
   let quizzesInPart = 0;
   let readsInPart = 0;
 
-  // variables contador progreso por curso
+  // variables contador progreso por tipo para cada curso
   let exercisesInCourse = 0;
   let quizzesInCourse = 0;
   let readsInCourse = 0;
 
-  // variables contador de completados por tipo
+  // variables contador de completados por tipo para cada usuario
   let exercisesCompleted = 0;
   let quizzesCompleted = 0;
   let readsCompleted = 0;
 
-  // variable para porcentaje total stats
-  let percentForStats = 0;
+  // variable para porcentaje total del curso por usuario
+  let percentTotal = 0;
   let quizzesScore = 0;
 
   // analizando el archivo json que contiene el progreso de los usuarios
@@ -49,7 +46,7 @@ window.computeUsersStats = (users, progress, courses) => {
       coursesProgress.name = course;
       if (progress[users[i].id].hasOwnProperty(course)) {
         let units = progress[users[i].id][course];
-        percentForStats = units.percent;
+        percentTotal = units.percent;
         for (let unit in units) {
           let temas = units[unit];
           for (let tema in temas) {
@@ -113,7 +110,7 @@ window.computeUsersStats = (users, progress, courses) => {
         completed: readsCompleted,
         percent: (readsCompleted === 0 && readsInPart === 0) ? 0 : Math.round((readsCompleted / readsInPart) * 100)
       },
-      percent: percentForStats,
+      percent: percentTotal,
     };
 
     // contando progreso por curso
@@ -131,7 +128,7 @@ window.computeUsersStats = (users, progress, courses) => {
     readsCompleted = 0;
     quizzesScore = 0;
 
-    percentForStats = 0;
+    percentTotal = 0;
 
 
   }
@@ -140,8 +137,8 @@ window.computeUsersStats = (users, progress, courses) => {
   coursesProgress.reads = Math.round(readsInCourse / users.length);
   coursesProgress.quizzes = Math.round(quizzesInCourse / users.length);
 
-  // enviando objeto coursesProgress 
-  //progressGeneral(coursesProgress);
+  // enviando objeto coursesProgress, esto se muestra en la parte principal de la web. Progreso por cursos
+  progressGeneral(coursesProgress);
 
   // asignando a userWithStats los usuarios con sus stats calculados
   usersWithStats = users;
@@ -150,25 +147,26 @@ window.computeUsersStats = (users, progress, courses) => {
 
 //ordenar usuarios
 window.sortUsers = (users, orderBy, orderDirection) => {
-  console.log('segunda funcion, ordenar usuarios');
 
   //devuelve usuarios ordenados de acuerdo a elección
   let usersOrder = users.sort((a, b) => {
+    let x = 0;
     switch (orderBy) {
       case 'name': {
         if (orderDirection === 'ASC') {
           if (a[orderBy] > b[orderBy]) {
-            return 1;
+            x = 1;
           } else {
-            return -1;
+            x = -1;
           }
         } else {
           if (a[orderBy] < b[orderBy]) {
-            return 1;
+            x = 1;
           } else {
-            return -1;
+            x = -1;
           }
         }
+        return x;
       }
       case 'exercises': {
         if (orderDirection === 'ASC') {
@@ -215,6 +213,37 @@ window.sortUsers = (users, orderBy, orderDirection) => {
           }
         }
       }
+      case 'scoreAvg': {
+        if (orderDirection === 'ASC') {
+          if (a.stats.quizzes[orderBy] > b.stats.quizzes[orderBy]) {
+            return 1;
+          } else {
+            return -1;
+          }
+        } else {
+          if (a.stats.quizzes[orderBy] < b.stats.quizzes[orderBy]) {
+            return 1;
+          } else {
+            return -1;
+          }
+        }
+      }
+      case 'scoreSum': {
+        if (orderDirection === 'ASC') {
+          if (a.stats.quizzes[orderBy] > b.stats.quizzes[orderBy]) {
+            return 1;
+          } else {
+            return -1;
+          }
+        } else {
+          if (a.stats.quizzes[orderBy] < b.stats.quizzes[orderBy]) {
+            return 1;
+          } else {
+            return -1;
+          }
+        }
+      }
+
       case 'percent': {
         if (orderDirection === 'ASC') {
           if (a.stats[orderBy] > b.stats[orderBy]) {
@@ -238,57 +267,14 @@ window.sortUsers = (users, orderBy, orderDirection) => {
 
 //filtrar usuarios
 window.filterUsers = (users, search) => {
-  console.log('tercera funcion, filtrar usuarios');
 
-  if (search === "") {
+  if (search === '') {
     return users;
   } else {
     return users.filter(user => (user.name.includes(search.toUpperCase())));
   }
 
 };
-
-
-let createTable = (element, title, usersWithStats) => {
-  console.log('creando tablas');
-
-  var thead = document.createElement('thead'); // crea un element thead para table
-  var tr = document.createElement('tr'); // crea un elemento tr para el head
-
-  for (var i = 0; i < title.length; i++) {
-    var th = document.createElement('th');//crea un elemento th para cada titulo
-    th.appendChild(document.createTextNode(title[i])); //da el nombre del titulo
-    tr.appendChild(th); // agrega el th a sus respectivos tr
-  }
-  thead.appendChild(tr); //agrega el tr al thead
-
-  var tbdy = document.createElement('tbody');
-  for (var j = 0; j < usersWithStats.length; j++) {
-    var tr = document.createElement('tr');
-    for (var k = 0; k < title.length; k++) {
-      if (k === 0) {
-        var td = document.createElement('td');
-        td.appendChild(document.createTextNode(j.toString()));
-        tr.appendChild(td);
-      } else if (k === 1) {
-        var td = document.createElement('td');
-        td.appendChild(document.createTextNode(usersWithStats[j].name));
-        tr.appendChild(td);
-      } else if (k < (title.length - 1)) {
-        var td = document.createElement('td');
-        td.appendChild(document.createTextNode(usersWithStats[j].stats[Object.keys(usersWithStats[j].stats)[k - 2]].percent));
-        tr.appendChild(td);
-      } else if (k === title.length - 1) {
-        var td = document.createElement('td');
-        td.appendChild(document.createTextNode(usersWithStats[j].stats[Object.keys(usersWithStats[j].stats)[k - 2]]));
-        tr.appendChild(td);
-      }
-    }
-    tbdy.appendChild(tr);
-  }
-  element.appendChild(thead);
-  element.appendChild(tbdy);
-}
 
 const getJSON = (url, callback) => {
   const xhr = new XMLHttpRequest();
