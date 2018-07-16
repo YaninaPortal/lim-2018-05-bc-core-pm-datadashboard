@@ -212,7 +212,7 @@ Como consecuancia de la entrevista se llegó a las siguientes conclusiones :
 
 * Unir la lista de alumnos y los porcentajes ya que estaban separados , ya que nuestra idea inicial era que ese cuadro desapareciara  al momento de que seleccionara el nombre de una alumna , por lo tanto deberia estar separado ; pero la observición de la Trading Manager era que deberian estar juntos para que pueda relacionar alumna y porcentaje de avance.
 
-* La prioridad de cursos , en primer lugar ejercicios autocorregidos  , seguido lecturas y  por ultimo quizzes.
+* La prioridad de cursos , en primer lugar ejercicios autocorregidos  , seguido lecturas y  por último quizzes.
 
 * Nos indico los gráficos de cada curso en especifico (ejercicios , lecturas y quizzes) en caso de llegar al Hacking Edition , para lecturas grafico circular , para quizzes y ejercicios graficos en barra.
 
@@ -220,6 +220,8 @@ Como consecuancia de la entrevista se llegó a las siguientes conclusiones :
 Del 0-40% en color rojo , del 40% - 60% color amarillo y del 60% al 100% en color verde.
 
 * Otro elemento que se podria tomar en cuenta seria una nueva pagina en donde pueda tener acceso a un promedio general.
+
+Tomando en cuenta lo manifestado por la Trading Manager diseñamos un prototipo ideal que se presenta a continuación.
 
 ## Prototipo de Alta Fidelidad.
 
@@ -231,6 +233,9 @@ Es el diseño ideal que se entregaria de tener un tiempo ilimitado , es el dise�
 ![4](image/4.png "4")
 ![5](image/5.png "5")
 
+## Prototipo de Alta Fidelidad con Marvel.
+
+https://marvelapp.com/e0beh3e
 
 ### Objetivo del Producto
 **El acceso que tendra la Trading Manager a la data mediante gráficos de rapida lectura , organizado de una manera que pueda encontrar la informacion  que  facilitara su labor .

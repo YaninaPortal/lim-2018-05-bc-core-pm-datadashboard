@@ -161,6 +161,10 @@ select, #text-search {
         text-align: center;
         padding: 20px;
     }
+
+    img{
+        margin: 20px;
+    }
     
     
 }
